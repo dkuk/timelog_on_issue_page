@@ -1,9 +1,6 @@
-document.observe('dom:loaded', function(){	
-	if ($('issue-changesets'))
-		$('issue-changesets').insert({bottom: $('issue_timelog')});
-	else
-		{
-		var issue_changesets =  new Element('div', {'id': 'issue-changesets'}).insert($('issue_timelog'));
-		$$('div.issue').first().insert({after: issue_changesets});
-		}
-	});
+jQuery(document).ready(function(){
+  if ( !$("#issue-changesets").length ){
+    $("<div id='issue-changesets'></div>").insertAfter( $("div.issue").first() );
+  }
+  $("#issue_timelog").appendTo("#issue-changesets")
+});
