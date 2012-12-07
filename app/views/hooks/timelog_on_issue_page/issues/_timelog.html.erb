@@ -1,0 +1,30 @@
+<% if @time_entries.size > 0 %>
+<%= javascript_include_tag :timelog_on_issue_page, :plugin => 'timelog_on_issue_page'  %>
+
+<div id="issue_timelog">
+	<h3><%= l(:label_spent_time) %></h3>
+
+<% @time_entries.each do |entry| %>
+	<div class="changeset <%= cycle('odd', 'even') %>">
+	<div>
+	<b><%= format_date entry.spent_on %>:
+	<%= l_hours entry.hours %></b> &mdash; <%= h entry.activity.name %>.
+	<%= authoring entry.created_on, entry.user %>
+
+<% if entry.editable_by?(User.current) -%>
+	<span style="float: right;">
+    <%= link_to image_tag('edit.png'), {:controller => 'timelog', :action => 'edit', :id => entry, :project_id => nil},
+                                       :title => l(:button_edit) %>
+    <%= link_to image_tag('delete.png'), {:controller => 'timelog', :action => 'destroy', :id => entry, :project_id => nil},
+                                         :confirm => l(:text_are_you_sure),
+                                         :method => :delete,
+                                         :title => l(:button_delete) %>
+	</span>
+<% end -%>	
+	</div>
+	<div><%= h entry.comments %></div>
+	</div>
+<% end %>
+
+</div>
+<% end %>
