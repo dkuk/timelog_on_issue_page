@@ -1,3 +1,0 @@
-= timelog_on_issue_page
-
-Description goes here
