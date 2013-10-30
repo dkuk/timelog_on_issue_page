@@ -10,7 +10,7 @@ Timelog is situated on issue page.
 #### Installation
 To install plugin, go to the folder “plugins” in root directory of Redmine. Clone plugin in that folder.
 
-		git clone github.com/dkuk/timelog_on_issue_page.git
+		git clone https://github.com/dkuk/timelog_on_issue_page.git
 
 Restart your web-server.
 
